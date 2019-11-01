@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# SYNTAX run_matlab_script MATLAB_SCRIPT_NAME
+
+
+scripts_dir=$(dirname $(readlink $0 -f))
+matlab="matlab2018a -nodisplay -nosplash -nodesktop"
+script_name=$1
+script_path=$scripts_dir/matlab_scripts/$script_name
+
+# call the matlab script
+# (with exception wrapper to secure continuation of this script)
+$matlab -r "try run('$script_path'); catch ME; disp('In $(pwd) the attept to run $script_path caused the following exception:'); disp(getReport(ME)); end; exit;"
