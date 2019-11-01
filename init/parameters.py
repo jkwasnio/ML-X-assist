@@ -7,6 +7,7 @@
 ###          undefined.                                                      ###
 ################################################################################
 
+import math
 import QDTK
 
 
@@ -33,6 +34,13 @@ hA = 1.0
 wA = 1.0
 # frequency of the harmonic potential B
 omegB = 0.1
+# formulas for trapping potentials of species \sigma
+# trapping potential U_\sigma for species \sigma
+U_A = lambda x: 0.5 * massA * (omegA ** 2) * (x ** 2) + hA * math.exp(
+    -x ** 2 / (2 * wA ** 2)
+) / (wA * math.sqrt(2 * math.pi))
+
+U_B = lambda x: 0.5 * massB * (omegB ** 2) * (x ** 2)
 
 ## interaction
 # AB interspecies interaction strengths
@@ -55,6 +63,7 @@ xmax = 25
 n = 300
 # sin dvr
 dvr = QDTK.sdvr(n, xmin, xmax)
+xs = dvr.x
 
 ## parameters of wave function expansion
 # number of \sigma species states
