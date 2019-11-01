@@ -7,9 +7,6 @@ root_dir=$(pwd)
 scripts_dir=$(dirname $(readlink $0 -f))
 setups_dir=$root_dir/setups
 
-echo $setups_dir
-
 # make dirs
 mkdir -p $setups_dir
 $scripts_dir/make_subdirs $setups_dir $1
-
