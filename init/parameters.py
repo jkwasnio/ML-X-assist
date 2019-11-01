@@ -1,3 +1,5 @@
+# read-only
+
 ################################################################################
 ### These are the physical and mathematical parameters.                      ###
 ### All scripts treat these values as read only.                             ###
