@@ -11,6 +11,7 @@
 # are occupied.
 ###############################################################################
 
+import os
 import numpy as np
 import pylab as pyl
 
@@ -89,4 +90,6 @@ if __name__ == "__main__":
     wfn = QDTK.Wfn(tape=tape)
     wfn.init_coef_multi_spec(Ns, ns, SPF, eps_norm, eps_over, full_spf=True)
     # write wavefunction to file
-    wfn.createWfnFile("initial_wfn.dat")
+    if not os.path.exists("relax"):
+        os.makedirs("relax")
+    wfn.createWfnFile("relax/initial_wfn.dat")
