@@ -9,6 +9,7 @@
 
 
 import sys
+import numpy as np
 
 module_name = sys.argv[1]
 
@@ -25,11 +26,34 @@ def convert(x):
 
 # register converters
 converter[int] = lambda i: str(i)
+converter[np.int8] = lambda i: str(i)
+converter[np.int16] = lambda i: str(i)
+converter[np.int32] = lambda i: str(i)
+converter[np.int64] = lambda i: str(i)
 converter[float] = lambda f: str(f)
+converter[np.float16] = lambda f: str(f)
+converter[np.float32] = lambda f: str(f)
+converter[np.float64] = lambda f: str(f)
+converter[np.complex] = lambda z: str(z)
+converter[np.complex64] = lambda z: str(z)
+converter[np.complex128] = lambda z: str(z)
 converter[str] = lambda s: "'" + str(s) + "'"
 converter[list] = lambda l: "[" + " ".join([convert(e) for e in l]) + "]"
 
 
+def convert_np_nd_array(a):
+    if len(a.shape) > 2:
+        return  # unsupported
+    # columns must be separated by spaces
+    separator = ";"
+    # coefficients must be separated by spaces
+    if len(a.shape) == 1:
+        separator = " "
+    return "[" + separator.join([convert(e) for e in a]) + "]"
+
+
+converter[np.ndarray] = convert_np_nd_array
+# TODO: extend
 supported_types = converter.keys()
 
 # import the module
