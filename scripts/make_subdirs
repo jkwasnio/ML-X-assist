@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# SYNTAX: make_subdirs ROOT_DIR MAX_ID
+
+
+# store original working directory
+old_wd=$(pwd)
+# execute command in each subfolder of the given root folder
+cd $1
+root_wd=$(pwd)
+for folder in $(seq 0 $2); do
+  cd $root_wd
+  mkdir -p $folder
+  cd $folder
+  #echo "created $(pwd)"
+done
+# restore original working directory
+cd $old_wd
