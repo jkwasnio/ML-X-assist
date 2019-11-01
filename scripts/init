@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# SYNTAX init
+
+# get id
+folder=$(basename $(pwd))
+# copy original files from source
+cp -r ../../init/* .
