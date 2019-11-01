@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# SYNTAX: exec_in_all_subdirs ROOT_DIR COMMAND
+
+
+# store original working directory
+old_wd=$(pwd)
+# execute command in each subfolder of the given root folder
+cd $1
+root_wd=$(pwd)
+for folder in ./*/; do
+  cd $root_wd/$folder
+  $2
+done
+# restore original working directory
+cd $old_wd
