@@ -19,10 +19,7 @@ import QDTK.Wavefunction as Wavefunction
 import QDTK.Tools.Mathematics as Mathematics
 import QDTK.Tools.SpfPlot as SpfPlot
 
-from make_hamilt import (
-    get_diagonalized_1B_hamilt_UA,
-    get_diagonalized_1B_hamilt_UB,
-)
+from make_hamilt import get_1B_hamilt_UA, get_1B_hamilt_UB
 
 # import parameters
 from parameters import *
@@ -67,12 +64,15 @@ if __name__ == "__main__":
     # bundle initial number states populations
     ns = [ns_A, ns_B]
 
-    # eigenstates and values of ititial potentials
-    energiesA, eigenstatesA = get_diagonalized_1B_hamilt_UA()
-    energiesB, eigenstatesB = get_diagonalized_1B_hamilt_UB()
+    # get 1b hamiltonians (potential term only)
+    hamilt_1b_UA = get_1B_hamilt_UA()
+    hamilt_1b_UB = get_1B_hamilt_UB()
+    # calculate eigenvalues
+    eigen_energies_A, eigen_states_A = hamilt_1b_UA.diag_1b_hamiltonian1d(n)
+    eigen_energies_B, eigen_states_B = hamilt_1b_UB.diag_1b_hamiltonian1d(n)
     #
-    SPF_A = Wavefunction.grab_lowest_eigenfct(mA, eigenstatesA)
-    SPF_B = Wavefunction.grab_lowest_eigenfct(mB, eigenstatesB)
+    SPF_A = Wavefunction.grab_lowest_eigenfct(mA, eigen_states_A)
+    SPF_B = Wavefunction.grab_lowest_eigenfct(mB, eigen_states_B)
     # orthonormalize 1body eigenstates for safety
     Mathematics.gramSchmidt(SPF_A)
     Mathematics.gramSchmidt(SPF_B)

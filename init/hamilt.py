@@ -164,13 +164,3 @@ one         |1 UB
     OPER.readTable(tab)
 
     return OPER
-
-
-def get_diagonalized_1B_hamilt_UA():
-    h1b = get_1B_hamilt_UA()
-    return h1b.diag_1b_hamiltonian1d(n)
-
-
-def get_diagonalized_1B_hamilt_UB():
-    h1b = get_1B_hamilt_UB()
-    return h1b.diag_1b_hamiltonian1d(n)
