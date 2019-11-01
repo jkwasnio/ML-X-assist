@@ -11,28 +11,43 @@
 import sys
 
 module_name = sys.argv[1]
-supported_types = [int, str, float]  # TODO: add list
 
+# define conversion from object to string by type
+converter = {}
+
+# shortcut for conversion
+def convert(x):
+    s = converter[type(x)](x)
+    if s is None:
+        return "'FAILED IMPORT'"
+    return s
+
+
+# register converters
+converter[int] = lambda i: str(i)
+converter[float] = lambda f: str(f)
+converter[str] = lambda s: "'" + str(s) + "'"
+converter[list] = lambda l: "[" + " ".join([convert(e) for e in l]) + "]"
+
+
+supported_types = converter.keys()
 
 # import the module
 module = __import__(module_name)
-# filter variables
-var_names = dir(module)
+# list attributes to be forwarded
+attribute_names = dir(module)
 # filter by name (exclude private and built-in varibales)
-var_names = [n for n in var_names if n[0] != "_"]
+attribute_names = [n for n in attribute_names if n[0] != "_"]
 # filter by type (supported types only)
-var_names = [
-    n for n in var_names if type(getattr(module, n)) in supported_types
+attribute_names = [
+    n for n in attribute_names if type(getattr(module, n)) in supported_types
 ]
 # generate import string
 matlab_import_str = ""
-for n in var_names:
+for n in attribute_names:
     value = getattr(module, n)
-    if type(value) == str:
-        value_str = "'" + value + "'"
-    else:
-        value_str = str(value)
-    matlab_import_str += " " + n + " = " + value_str + ";"
+    value_str = convert(value)
+    matlab_import_str += n + " = " + value_str + ";"
 
 # output matlab import string
 sys.stdout.write(matlab_import_str)
