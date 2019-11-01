@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# SYNTAX make_parametrs_mat
+
+
+scripts_dir=$(dirname $(readlink $0 -f))
+# make .mat from .py
+$scripts_dir/python_module_to_mat parameters
