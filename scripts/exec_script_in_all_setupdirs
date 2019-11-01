@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# SYNTAX: exec_script_in_all_setups SCRIPT_NAME
+
+
+root_dir=$(pwd)
+scripts_dir=$(dirname $(readlink $0 -f))
+setups_dir=$root_dir/setups
+
+# initialize
+$scripts_dir/exec_in_all_subdirs $setups_dir "$scripts_dir/$1"
