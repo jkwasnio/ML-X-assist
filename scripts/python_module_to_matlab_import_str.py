@@ -9,7 +9,6 @@
 
 
 import sys
-import fileinput
 
 module_name = sys.argv[1]
 supported_types = [int, str, float]  # TODO: add list
