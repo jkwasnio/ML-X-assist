@@ -3,9 +3,13 @@
 # SYNTAX: python python_module_edit.py FILE_PATH ID [ATTRIBUTE_NAME_1=ATTRIBUTE_EXPRESSION_1;...;ATTRIBUTE_NAME_N=ATTRIBUTE_EXPRESSION_N]
 # Note: An ATTRIBUTE_EXPRESSION may contain an `{ID}` variable which will be replaced by the subfolders name.
 
-#####
-#   #
-#####
+################################################################################
+# Primitively edits a python module by overwriting lines.
+# E.g.
+# example.py : `x = 0\ny = 1\n`
+# call : `python_module_edit example.py` 1 x={ID}*2;a=1
+# example.py : `x = 2\ny = 1\na = 1\n
+################################################################################
 
 import sys
 
