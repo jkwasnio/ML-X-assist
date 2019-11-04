@@ -11,8 +11,10 @@ import os
 from hamilt import *
 
 ## create many-body Hamiltonians and write it to a files
+
+subfolder = "propagation"
 if __name__ == "__main__":
-    if not os.path.exists("propagate"):
-        os.makedirs("propagate")
+    if not os.path.exists(subfolder):
+        os.makedirs(subfolder)
     op1 = get_hamilt()
-    op1.createOperatorFileb("propagate/hamilt.dat")
+    hamilt.createOperatorFileb(subfolder + "/hamilt.dat")

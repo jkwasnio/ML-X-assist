@@ -11,8 +11,10 @@ import os
 from hamilt import get_hamilt_relax
 
 ## create many-body relaxation Hamiltonian and write it to a file
+
+subfolder = "relaxation"
 if __name__ == "__main__":
-    if not os.path.exists("relax"):
-        os.makedirs("relax")
+    if not os.path.exists(subfolder):
+        os.makedirs(subfolder)
     hamilt = get_hamilt_relax()
-    hamilt.createOperatorFileb("relax/hamilt_relax.dat")
+    hamilt.createOperatorFileb(subfolder + "/hamilt.dat")

@@ -25,7 +25,9 @@ from make_hamilt import get_1B_hamilt_UA, get_1B_hamilt_UB
 # import parameters
 from parameters import *
 
+subfolder = "relaxation"
 if __name__ == "__main__":
+
     tape = (
         -10,
         2,
@@ -90,6 +92,6 @@ if __name__ == "__main__":
     wfn = QDTK.Wfn(tape=tape)
     wfn.init_coef_multi_spec(Ns, ns, SPF, eps_norm, eps_over, full_spf=True)
     # write wavefunction to file
-    if not os.path.exists("relax"):
-        os.makedirs("relax")
-    wfn.createWfnFile("relax/initial_wfn.dat")
+    if not os.path.exists(subfolder):
+        os.makedirs(subfolder)
+    wfn.createWfnFile(subfolder + "/initial_wavefunction.dat")
