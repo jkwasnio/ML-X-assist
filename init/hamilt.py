@@ -107,6 +107,66 @@ gAB         |{1:2} delta
 ## define one-body Hamiltonians
 
 ## Species A
+def get_1B_hamilt_relaxation_UA():
+    """ returns 1body Hamiltonian defined by trapping potential U"""
+    # 1body Hamiltonian constructed as an Operator, not Operatorb object in
+    # order not to care about the shaddow terms
+
+    OPER = Oper.Operator()  #### OPER is defined as a Operator class in Oper
+    pdim = np.zeros(1)
+    pdim[0] = n
+    OPER.pdim = tuple(pdim)
+    OPER.primitive = [dvr]
+
+    # Labels
+    OPER.addLabel("dq2", Oper.OTerm(dvr.d2dvr))
+    OPER.addLabel("UA", Oper.OTerm(discrete_eval(U_A, xs)))
+
+    OPER.addLabel("kin1", Oper.OCoef(-0.5 / massA))
+    OPER.addLabel("one", Oper.OCoef(1.0))
+
+    tab = """
+## Kinetic Energy
+kin1        |1 dq2
+## double well trap
+one         |1 UA
+"""
+    OPER.readTable(tab)
+
+    return OPER
+
+
+## Species B
+def get_1B_hamilt_relaxation_UB():
+    """ returns 1body Hamiltonian defined by trapping potential U"""
+    # 1body Hamiltonian constructed as an Operator, not Operatorb object in
+    # order not to care about the shaddow terms
+
+    OPER = Oper.Operator()  #### OPER is defined as a Operator class in Oper
+    pdim = np.zeros(1)
+    pdim[0] = n
+    OPER.pdim = tuple(pdim)
+    OPER.primitive = [dvr]
+
+    # Labels
+    OPER.addLabel("dq2", Oper.OTerm(dvr.d2dvr))
+    OPER.addLabel("UB", Oper.OTerm(discrete_eval(U_B, xs)))
+
+    OPER.addLabel("kin2", Oper.OCoef(-0.5 / massB))
+    OPER.addLabel("one", Oper.OCoef(1.0))
+
+    tab = """
+## Kinetic Energy
+kin2        |1 dq2
+## double well trap
+one         |1 UB
+"""
+    OPER.readTable(tab)
+
+    return OPER
+
+
+## Species A
 def get_1B_hamilt_propagation_UA():
     """ returns 1body Hamiltonian defined by trapping potential U"""
     # 1body Hamiltonian constructed as an Operator, not Operatorb object in
