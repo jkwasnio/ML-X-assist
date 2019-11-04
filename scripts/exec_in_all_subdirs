@@ -10,6 +10,8 @@ cd $1
 root_wd=$(pwd)
 for folder in ./*/; do
   cd $root_wd/$folder
+  #folder_name=$(basename $folder)
+  #echo "Processing $folder_name"
   $2
 done
 # restore original working directory
