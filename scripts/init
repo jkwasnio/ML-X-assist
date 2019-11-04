@@ -13,4 +13,4 @@ id=$subfolder_name
 # copy original files from source
 cp -r ../../init/* .
 # edit parameters file
-$scripts_dir/python_module_edit.py ./parameters.py $id $overwrite_specification
+$scripts_dir/python_module_edit ./parameters.py $id $overwrite_specification

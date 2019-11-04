@@ -8,4 +8,4 @@ matlab="matlab2018a -nodisplay -nosplash -nodesktop"
 file_name=$1
 
 # transfer all supported parameters from .py to .mat
-$matlab -r "$(python $scripts_dir/python_module_to_matlab_import_str.py $file_name) save $file_name; exit;"
+$matlab -r "$(python $scripts_dir/python_module_to_matlab_import_str $file_name) save $file_name; exit;"
