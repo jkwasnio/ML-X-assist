@@ -34,6 +34,16 @@ Call
 ```
 to create the initial wavefunction for the relaxation.
 
+### Visualize One-Body Hamiltonians
+Call 
+```
+./scripts/exec_script_in_all_setupdirs "visualize_1b_hamilt_relaxation"
+```
+or
+```
+./scripts/exec_script_in_all_setupdirs "visualize_1b_hamilt_propagation"
+```
+
 ### Working with MATLAB
 Call 
 ```
