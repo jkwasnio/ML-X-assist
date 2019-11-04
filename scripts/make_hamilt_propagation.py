@@ -16,5 +16,5 @@ subfolder = "propagation"
 if __name__ == "__main__":
     if not os.path.exists(subfolder):
         os.makedirs(subfolder)
-    op1 = get_hamilt()
+    hamilt = get_hamilt()
     hamilt.createOperatorFileb(subfolder + "/hamilt.dat")
