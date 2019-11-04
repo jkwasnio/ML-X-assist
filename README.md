@@ -1,6 +1,7 @@
 # ML-X-assist
 
 ## Example
+### Initialization
 Configure the `parameters.py` and `hamiltonian.py` in the `./init` folder t match the properites of a general setup.
 
 Call 
