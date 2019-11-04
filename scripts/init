@@ -21,6 +21,6 @@ stage_source_path=${source_path}_${stage_name}
 if [ -d $stage_source_path ]; then
     for source_path in $stage_source_path/*; do
         target_path=$(basename $source_path)
-        $scripts_dir/file_edit $source_path $target_path ML_X_PATH=BLA
+        $scripts_dir/file_edit $source_path $target_path ML_X_PATH=~/Dokumente/Bachelor/ML-X
     done
 fi
