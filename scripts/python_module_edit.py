@@ -38,22 +38,24 @@ if __name__ == "__main__":
     overwrite_attributes = {e[0]: e[1] for e in overwrite_attributes}
 
     lines = []
-    # overwrite first appearence of each attribute when present
+    # read file
     with open(file_path, "r") as file:
         lines = file.readlines()
-        for i in range(len(lines)):
-            for attribute_name, expression in overwrite_attributes.items():
-                if line_defines_attribute(lines[i], attribute_name):
-                    lines[i] = create_new_line(
-                        attribute_name, expression, "overwritten", id
-                    )
-                    del overwrite_attributes[attribute_name]
-                    break
-    # write new attributes to end of file
-    with open(file_path, "w") as file:
-        if overwrite_attributes:
-            lines.append("\n\n")
+    # overwrite first appearence of each attribute when present
+    for i in range(len(lines)):
         for attribute_name, expression in overwrite_attributes.items():
-            line = create_new_line(attribute_name, expression, "added", id)
-            lines.append(line)
+            if line_defines_attribute(lines[i], attribute_name):
+                lines[i] = create_new_line(
+                    attribute_name, expression, "overwritten", id
+                )
+                del overwrite_attributes[attribute_name]
+                break
+    # append new attributes to end of file
+    if overwrite_attributes:
+        lines.append("\n\n")
+    for attribute_name, expression in overwrite_attributes.items():
+        line = create_new_line(attribute_name, expression, "added", id)
+        lines.append(line)
+    # write file
+    with open(file_path, "w") as file:
         file.writelines(lines)
