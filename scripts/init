@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # SYNTAX init [ATTRIBUTE_NAME_1=ATTRIBUTE_EXPRESSION_1;...;ATTRIBUTE_NAME_N=ATTRIBUTE_EXPRESSION_N]
-# Note: An ATTRIBUTE_EXPRESSION may contain an `{ID}` variable.
+# Note: An ATTRIBUTE_EXPRESSION may contain an `{ID}` variable which will be replaced by the subfolders name.
 
 scripts_dir=$(dirname $(readlink $0 -f))
 overwrite_specification=$1

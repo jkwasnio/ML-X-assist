@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 # SYNTAX: python python_module_edit.py FILE_PATH ID [ATTRIBUTE_NAME_1=ATTRIBUTE_EXPRESSION_1;...;ATTRIBUTE_NAME_N=ATTRIBUTE_EXPRESSION_N]
-# Note: An ATTRIBUTE_EXPRESSION may contain an `{ID}` variable which will be replaced by .
+# Note: An ATTRIBUTE_EXPRESSION may contain an `{ID}` variable which will be replaced by the subfolders name.
 
 #####
 #   #
