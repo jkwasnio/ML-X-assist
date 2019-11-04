@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# SYNTAX: exec_in_all_setups STAGE_NAME COMMAND
+
+root_dir=$(pwd)
+scripts_dir=$(dirname $(readlink $0 -f))
+setups_dir=$root_dir/setups
+
+# initialize
+$scripts_dir/exec_in_all_subdirs $setups_dir "cd $1 && $2"
