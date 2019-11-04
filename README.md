@@ -19,18 +19,18 @@ to copy the content of the `./init` folder (`parameters.py` and `hamilt.py`) to 
 
 Call 
 ```
-./scripts/exec_script_in_all_setupdirs "make_hamilt_relaxation.py"
+./scripts/exec_script_in_all_setupdirs "make_hamilt_relaxation"
 ```
 and
 ```
-./scripts/exec_script_in_all_setupdirs "make_hamilt_propagation.py"
+./scripts/exec_script_in_all_setupdirs "make_hamilt_propagation"
 ```
 to generate the Hamiltonians in each setup for the relaxation and propagation respectively.
 
 
 Call 
 ```
-./scripts/exec_script_in_all_setupdirs "make_initial_wavefunction.py"
+./scripts/exec_script_in_all_setupdirs "make_initial_wavefunction"
 ```
 to create the initial wavefunction for the relaxation.
 
