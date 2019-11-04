@@ -30,6 +30,20 @@ and
 ```
 to copy the content of the `./init` folder (`parameters.py` and `hamiltonian.py`) to each setup. Here, in `parameters.py` each `gAB` is set to the value of the setup id minus one and `hA` is set to zero during the propagation.
 
+_Note: The content of `init_relaxaion` (`init_propagation`) is copied as well if such a folder exists. In addition all parameter references (`{PARAMETER_NAME}`) are resolved inside these files as well._
+
+Call 
+```
+./scripts/exec_script_in_stage_in_all_setupdirs relaxation "file_edit job.sh job.sh ML_X_PATH=~/ML-X"
+```
+and
+```
+./scripts/exec_script_in_stage_in_all_setupdirs propagation "file_edit job.sh job.sh ML_X_PATH=~/ML-X"
+```
+to set the ML-X path for the relaxation.
+
+_Note: Replace `~/ML-X` with the actual path to the ML-X root folder._
+
 
 Call 
 ```
