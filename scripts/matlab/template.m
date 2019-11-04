@@ -1,9 +1,9 @@
-%%% standart prelude %%%
-% change path to current working directory
-% (matlab does NOT do this automatically!)
+%%% prelude %%%
+% change directory to current working directory
+% (MATLAB does not do this automatically)
 cd(getenv('PWD'));
-% load parameters
+% load marameters
 load parameters;
 
-% example
+%%% script %%%
 disp(['massA from the parameters file has the value ' num2str(massA)]);
