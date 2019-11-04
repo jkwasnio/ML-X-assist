@@ -20,7 +20,7 @@ from util import discrete_eval
 from parameters import *
 
 
-def get_hamilt():
+def get_hamilt_propagation():
     """builds many body Hamiltonian for the propagation of the initial state"""
     # many-body operator -> Operatorb object
 
@@ -62,7 +62,7 @@ gAB         |{1:2} delta
     return OPER
 
 
-def get_hamilt_relax():
+def get_hamilt_relaxation():
     """builds many body Hamiltonian for the initial state"""
     # many-body operator -> Operatorb object
 
@@ -107,7 +107,7 @@ gAB         |{1:2} delta
 ## define one-body Hamiltonians
 
 ## Species A
-def get_1B_hamilt_UA():
+def get_1B_hamilt_propagation_UA():
     """ returns 1body Hamiltonian defined by trapping potential U"""
     # 1body Hamiltonian constructed as an Operator, not Operatorb object in
     # order not to care about the shaddow terms
@@ -137,7 +137,7 @@ one         |1 UA
 
 
 ## Species B
-def get_1B_hamilt_UB():
+def get_1B_hamilt_propagation_UB():
     """ returns 1body Hamiltonian defined by trapping potential U"""
     # 1body Hamiltonian constructed as an Operator, not Operatorb object in
     # order not to care about the shaddow terms
