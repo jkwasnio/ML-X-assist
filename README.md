@@ -30,7 +30,7 @@ to generate the Hamiltonians in each setup for the relaxation and propagation re
 
 Call 
 ```
-./scripts/exec_script_in_all_setupdirs "make_initial_wavefunction"
+./scripts/exec_script_in_all_setupdirs "make_initial_wavefunction_relaxation"
 ```
 to create the initial wavefunction for the relaxation.
 
