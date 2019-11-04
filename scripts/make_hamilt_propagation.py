@@ -10,7 +10,7 @@ import os
 # import hamiltonian
 from hamilt import *
 
-## create many-body Hamiltonians and write it to a files
+## create many-body Hamiltonian and write it to a file
 
 subfolder = "propagation"
 if __name__ == "__main__":
