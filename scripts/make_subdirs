@@ -8,7 +8,7 @@ old_wd=$(pwd)
 # execute command in each subfolder of the given root folder
 cd $1
 root_wd=$(pwd)
-for folder in $(seq 0 $2); do
+for folder in $(seq 1 $2); do
   cd $root_wd
   mkdir -p $folder
   cd $folder
