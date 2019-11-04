@@ -16,3 +16,11 @@ id=$(basename $(readlink $(pwd)/.. -f))
 cp -r $source_path/* .
 # edit parameters file
 $scripts_dir/python_module_edit ./parameters.py $overwrite_specification "ID=$id"
+# add and edit additional stage files (optional)
+stage_source_path=${source_path}_${stage_name}
+if [ -d $stage_source_path ]; then
+    for source_path in $stage_source_path/*; do
+        target_path=$(basename $source_path)
+        $scripts_dir/file_edit $source_path $target_path ML_X_PATH=BLA
+    done
+fi
