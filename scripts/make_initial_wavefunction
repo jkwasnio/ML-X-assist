@@ -13,12 +13,10 @@
 
 import os
 import numpy as np
-import pylab as pyl
 
 import QDTK
 import QDTK.Wavefunction as Wavefunction
 import QDTK.Tools.Mathematics as Mathematics
-import QDTK.Tools.SpfPlot as SpfPlot
 
 from hamilt import get_1B_hamilt_UA, get_1B_hamilt_UB
 
