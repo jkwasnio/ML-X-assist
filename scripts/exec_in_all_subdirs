@@ -12,7 +12,7 @@ for folder in ./*/; do
   cd $root_wd/$folder
   #folder_name=$(basename $folder)
   #echo "Processing $folder_name"
-  $2
+  eval $2
 done
 # restore original working directory
 cd $old_wd
