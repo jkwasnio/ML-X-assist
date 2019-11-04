@@ -1,17 +1,18 @@
 #!/bin/bash
 
-# SYNTAX init [ATTRIBUTE_NAME_1=ATTRIBUTE_EXPRESSION_1;...;ATTRIBUTE_NAME_N=ATTRIBUTE_EXPRESSION_N]
+# SYNTAX init SOURCE_PATH [ATTRIBUTE_NAME_1=ATTRIBUTE_EXPRESSION_1;...;ATTRIBUTE_NAME_N=ATTRIBUTE_EXPRESSION_N]
 # Note: An ATTRIBUTE_EXPRESSION may contain an `{ID}` variable which will be
 # replaced by the setup's id.
 
 scripts_dir=$(dirname $(readlink $0 -f))
-overwrite_specification=$1
+source_path=$(dirname $scripts_dir)/$1
+overwrite_specification=$2
 
 # get id
-subfolder_name=$(basename $(pwd))
-id=$subfolder_name
+stage_name=$(basename $(pwd))
+id=$(basename $(readlink $(pwd)/.. -f))
 
 # copy original files from source
-cp -r ../../init/* .
+cp -r $source_path/* .
 # edit parameters file
 $scripts_dir/python_module_edit ./parameters.py $overwrite_specification "ID=$id"
