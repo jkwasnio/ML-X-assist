@@ -34,19 +34,6 @@ _Note: The content of `init_relaxaion` (`init_propagation`) is copied as well if
 
 Call 
 ```
-./scripts/exec_script_in_stage_in_all_setupdirs relaxation "file_edit job.sh job.sh ML_X_PATH=~/ML-X"
-```
-and
-```
-./scripts/exec_script_in_stage_in_all_setupdirs propagation "file_edit job.sh job.sh ML_X_PATH=~/ML-X"
-```
-to set the ML-X path for the relaxation.
-
-_Note: Replace `~/ML-X` with the actual path to the ML-X root folder._
-
-
-Call 
-```
 ./scripts/exec_script_in_stage_in_all_setupdirs relaxation "make_hamiltonian"
 ```
 and
@@ -61,6 +48,30 @@ Call
 ./scripts/exec_script_in_stage_in_all_setupdirs relaxation "make_initial_wavefunction_for_relaxation"
 ```
 to create the initial wavefunction for the relaxation.
+
+### Run Jobs
+Call 
+```
+./scripts/exec_script_in_stage_in_all_setupdirs relaxation "file_edit job.sh job.sh ML_X_PATH=~/ML-X"
+```
+or
+```
+./scripts/exec_script_in_stage_in_all_setupdirs propagation "file_edit job.sh job.sh ML_X_PATH=~/ML-X"
+```
+to set the ML-X path for the relaxation.
+
+_Note: Replace `~/ML-X` with the actual path to the ML-X root folder._
+
+Call 
+```
+./scripts/exec_in_stage_in_all_setupdirs relaxation "bash job.sh"
+```
+or 
+```
+./scripts/exec_in_stage_in_all_setupdirs propagation "bash job.sh"
+```
+to run the relaxation/propagation script.
+
 
 ### Working with MATLAB
 Call 
