@@ -1,0 +1,47 @@
+#!/usr/bin/python
+
+# SYNTAX: python file_edit SOURCE_PATH TARGET_PATH  ["[META_VARIABLE_NAME_1=META_VARIABLE_VALUE_1;...;META_VARIABLE_NAME_N=META_VARIABLE_VALUE_N]"]
+
+# Note: Any `{PARAMETERS_VARIABLE_NAME}` reference will be replaced by the
+# respective value and any `{META_VARIABLE_NAME}` reference will be replaced by
+# the respective `META_VARIABLE_VALUE`.
+# Note: Meta variables are stronger than parameter variables.
+
+import sys
+import parameters
+
+
+# extract file paths
+source_path = sys.argv[1]
+target_path = sys.argv[2]
+# extract meta_variables (optional)
+meta_variables = {}
+if len(sys.argv) > 3:
+    meta_variables = sys.argv[3]
+    meta_variables = meta_variables.split(";")
+    meta_variables = [e.split("=") for e in meta_variables]
+    meta_variables = {"{" + e[0] + "}": e[1] for e in meta_variables}
+
+# extract variables
+variables = dir(parameters)
+variables = {
+    "{" + name + "}": getattr(parameters, name)
+    for name in variables
+    if name[0] != "_"
+}
+
+# merge meta variables (meta variables are stronger)
+variables.update(meta_variables)
+
+
+lines = []
+# read file
+with open(source_path, "r") as file:
+    lines = file.readlines()
+# insert variables
+for i in range(len(lines)):
+    for name, value in variables.items():
+        lines[i] = lines[i].replace(name, str(value))
+# write file
+with open(target_path, "w") as file:
+    file.writelines(lines)
