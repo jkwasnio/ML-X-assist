@@ -11,7 +11,10 @@ import sys
 
 
 def line_defines_attribute(line, attribute_name):
-    return line.startswith(attribute_name)
+    try:
+        return line.split("=")[0].strip().startswith(attribute_name)
+    except:
+        return False
 
 
 def create_new_line(attribute_name, expression, tag, id):
