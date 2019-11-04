@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # SYNTAX init [ATTRIBUTE_NAME_1=ATTRIBUTE_EXPRESSION_1;...;ATTRIBUTE_NAME_N=ATTRIBUTE_EXPRESSION_N]
-# Note: An ATTRIBUTE_EXPRESSION may contain an `{ID}` variable which will be replaced by the subfolders name.
+# Note: An ATTRIBUTE_EXPRESSION may contain an `{ID}` variable which will be
+# replaced by the setup's id.
 
 scripts_dir=$(dirname $(readlink $0 -f))
 overwrite_specification=$1
@@ -13,4 +14,4 @@ id=$subfolder_name
 # copy original files from source
 cp -r ../../init/* .
 # edit parameters file
-$scripts_dir/python_module_edit ./parameters.py $id $overwrite_specification
+$scripts_dir/python_module_edit ./parameters.py $overwrite_specification "ID=$id"

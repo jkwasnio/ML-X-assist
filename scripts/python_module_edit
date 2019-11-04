@@ -1,14 +1,20 @@
 #!/usr/bin/python
 
-# SYNTAX: python python_module_edit.py FILE_PATH ID [ATTRIBUTE_NAME_1=ATTRIBUTE_EXPRESSION_1;...;ATTRIBUTE_NAME_N=ATTRIBUTE_EXPRESSION_N]
-# Note: An ATTRIBUTE_EXPRESSION may contain an `{ID}` variable which will be replaced by the subfolders name.
+# SYNTAX: python python_module_edit.py FILE_PATH "[ATTRIBUTE_NAME_1=ATTRIBUTE_EXPRESSION_1;...;ATTRIBUTE_NAME_N=ATTRIBUTE_EXPRESSION_N]" ["[META_VARIABLE_NAME_1=META_VARIABLE_VALUE_1;...;META_VARIABLE_NAME_N=META_VARIABLE_VALUE_N]"]
+
+# Note: An ATTRIBUTE_EXPRESSION may contain an `{META_VARIABLE_NAME}` reference
+# which will be replaced by the respective value of the meta variable.
+# In addition to a replacement an attept to evaluate the expression is made
+# to 'simplify' the expression (e.g. `2*{X}+1` becomes `5` for `X=1`).
+# Note: ATTRIBUTE_EXPRESSIONs without a refernece to a meta varible are NOT
+# evaluated.
 
 ################################################################################
 # Primitively edits a python module by overwriting lines.
 # E.g.
 # example.py : `x = 0\ny = 1\n`
-# call : `python_module_edit example.py` 1 x={ID}*2;a=1
-# example.py : `x = 2\ny = 1\na = 1\n
+# call : `python_module_edit example.py "x={X}*2;a=1" "X=1"`
+# example.py : `x = 2\ny = 1\na = 1\n`
 ################################################################################
 
 import sys
@@ -21,27 +27,39 @@ def line_defines_attribute(line, attribute_name):
         return False
 
 
-def create_new_line(attribute_name, expression, tag, id):
-    if "{ID}" in expression:
-        # inset parametes into expression
-        expression = expression.replace("{ID}", "(" + id + ")")
-        # evaluate expresion
-        locals = {"ret": None}
-        exec("ret = " + expression, {}, locals)
-        expression = str(locals["ret"])
+def create_new_line(attribute_name, expression, tag, meta_variables):
+    evaluate = False
+    for meta_variable, value in meta_variables.items():
+        if meta_variable in expression:
+            expression = expression.replace(meta_variable, "(" + value + ")")
+            evaluate = True
+    # (try to) evaluate expresion
+    if evaluate:
+        try:
+            locals = {"ret": None}
+            exec("ret = " + expression, {}, locals)
+            ret = str(locals["ret"])
+            expression = ret
+        except:
+            pass
     # crate new attribute definition
     return attribute_name + " = " + expression + " #" + tag + "\n"
 
 
 # extract file path
 file_path = sys.argv[1]
-# extract id
-id = sys.argv[2]
 # extract overwrite attributes
-overwrite_attributes = sys.argv[3]
+overwrite_attributes = sys.argv[2]
 overwrite_attributes = overwrite_attributes.split(";")
 overwrite_attributes = [e.split("=") for e in overwrite_attributes]
 overwrite_attributes = {e[0]: e[1] for e in overwrite_attributes}
+# extract meta_variables (optional)
+meta_variables = {}
+if len(sys.argv) > 3:
+    meta_variables = sys.argv[3]
+    meta_variables = meta_variables.split(";")
+    meta_variables = [e.split("=") for e in meta_variables]
+    meta_variables = {"{" + e[0] + "}": e[1] for e in meta_variables}
 
 lines = []
 # read file
@@ -52,7 +70,7 @@ for i in range(len(lines)):
     for attribute_name, expression in overwrite_attributes.items():
         if line_defines_attribute(lines[i], attribute_name):
             lines[i] = create_new_line(
-                attribute_name, expression, "overwritten", id
+                attribute_name, expression, "overwritten", meta_variables
             )
             del overwrite_attributes[attribute_name]
             break
@@ -60,7 +78,7 @@ for i in range(len(lines)):
 if overwrite_attributes:
     lines.append("\n\n")
 for attribute_name, expression in overwrite_attributes.items():
-    line = create_new_line(attribute_name, expression, "added", id)
+    line = create_new_line(attribute_name, expression, "added", meta_variables)
     lines.append(line)
 # write file
 with open(file_path, "w") as file:
