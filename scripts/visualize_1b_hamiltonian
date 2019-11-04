@@ -12,11 +12,11 @@ from util import discrete_eval
 from parameters import *
 
 # import hamiltonian
-from hamilt import get_1B_hamilt_propagation_UA, get_1B_hamilt_propagation_UB
+from hamiltonian import get_1B_hamiltonian_A, get_1B_hamiltonian_B
 
 # get 1b hamiltonians (potential term only)
-hamilt_1b_UA = get_1B_hamilt_propagation_UA()
-hamilt_1b_UB = get_1B_hamilt_propagation_UB()
+hamilt_1b_UA = get_1B_hamiltonian_A()
+hamilt_1b_UB = get_1B_hamiltonian_B()
 # calculate eigenvalues
 eigen_energies_A, eigen_states_A = hamilt_1b_UA.diag_1b_hamiltonian1d(n)
 eigen_energies_B, eigen_states_B = hamilt_1b_UB.diag_1b_hamiltonian1d(n)

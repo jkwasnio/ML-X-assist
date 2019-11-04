@@ -18,12 +18,11 @@ import QDTK
 import QDTK.Wavefunction as Wavefunction
 import QDTK.Tools.Mathematics as Mathematics
 
-from hamilt import get_1B_hamilt_relaxation_UA, get_1B_hamilt_relaxation_UB
+# import one-body Hamiltonians
+from hamiltonian import get_1B_hamiltonian_A, get_1B_hamiltonian_B
 
 # import parameters
 from parameters import *
-
-subfolder = "relaxation"
 
 tape = (
     -10,
@@ -65,8 +64,8 @@ ns_B[0:NB] = 1
 ns = [ns_A, ns_B]
 
 # get 1b hamiltonians (potential term only)
-hamilt_1b_UA = get_1B_hamilt_relaxation_UA()
-hamilt_1b_UB = get_1B_hamilt_relaxation_UB()
+hamilt_1b_UA = get_1B_hamiltonian_A()
+hamilt_1b_UB = get_1B_hamiltonian_B()
 # calculate eigenvalues
 eigen_energies_A, eigen_states_A = hamilt_1b_UA.diag_1b_hamiltonian1d(n)
 eigen_energies_B, eigen_states_B = hamilt_1b_UB.diag_1b_hamiltonian1d(n)
@@ -89,6 +88,4 @@ eps_over = 10 ** (-15)
 wfn = QDTK.Wfn(tape=tape)
 wfn.init_coef_multi_spec(Ns, ns, SPF, eps_norm, eps_over, full_spf=True)
 # write wavefunction to file
-if not os.path.exists(subfolder):
-    os.makedirs(subfolder)
-wfn.createWfnFile(subfolder + "/initial_wavefunction.dat")
+wfn.createWfnFile("initial_wavefunction.dat")

@@ -7,12 +7,9 @@
 
 import os
 
-# import hamiltonian
-from hamilt import get_hamilt_propagation
+# import Hamiltonian
+from hamiltonian import get_hamiltonian
 
 ## create many-body Hamiltonian and write it to a file
-subfolder = "propagation"
-if not os.path.exists(subfolder):
-    os.makedirs(subfolder)
-hamilt = get_hamilt_propagation()
-hamilt.createOperatorFileb(subfolder + "/hamilt.dat")
+hamilt = get_hamiltonian()
+hamilt.createOperatorFileb("hamiltonian.dat")
