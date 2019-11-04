@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# SYNTAX: make_setupdirs STAGE_NAME
+
+
+root_dir=$(pwd)
+scripts_dir=$(dirname $(readlink $0 -f))
+
+# make dirs
+$scripts_dir/exec_in_all_setupdirs "mkdir -p $1"
