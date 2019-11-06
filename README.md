@@ -2,7 +2,7 @@
 
 ## Example
 ### Initialization
-Configure the `parameters.py` and `hamiltonian.py` in the `./init` folder t match the properites of a general setup.
+Configure the `parameters.py` and `hamiltonian.py` in the `./init` folder to match the properites of a general setup.
 
 Call 
 ```
