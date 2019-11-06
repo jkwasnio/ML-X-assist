@@ -20,9 +20,9 @@ creates subdirectories for the relaxation and propagation stage.
 ./scripts/exec_script_in_stage_in_all_setupdirs relaxation "init init gAB={ID}-1"
 ./scripts/exec_script_in_stage_in_all_setupdirs propagation "init init gAB={ID}-1;hA=0"
 ```
-runs the script `./scripts/init` in the stage folder `relaxation`/`propagation` for all setups. `./scripts/init` copies the content of the `./init` folder (`parameters.py` and `hamiltonian.py`) to each setup. Here, in `parameters.py` each `gAB` is set to the value of the setup id minus one and `hA` is set to zero during the propagation.
+runs the script [`./scripts/init`](scripts/init) in the stage folder `relaxation`/`propagation` for all setups. [`./scripts/init`](scripts/init) copies the content of the [`./init`](init) folder ([`parameters.py`](init/parameters.py) and [`hamiltonian.py`](init/hamiltonian.py)) to each setup. Here, in [`parameters.py`](init/parameters.py)each `gAB` is set to the value of the setup id minus one and `hA` is set to zero during the propagation.
 
-_Note: The content of `init_relaxaion` (`init_propagation`) is copied as well if such a folder exists. In addition all parameter references (`{PARAMETER_NAME}`) are resolved inside these files as well._
+_Note: The content of [`./init_relaxaion`](init_relaxation) resp. [`./init_propagation`](init_propagation) is copied as well if such a folder exists. In addition all parameter references (`{PARAMETER_NAME}`) are resolved inside these files as well._
 
 #### Step 4
 ```
@@ -66,7 +66,7 @@ _Note: Not all values are transfered._
 ```
 runs the MATLAB script `example.m` located in `./scripts/matlab`.
 
-_Note: The script must begin with a change to the current working directory (`cd(getenv('PWD'));`) and might load the parameters.mat (`load('parameters.mat');`). See `./scripts/matlab/template.m`._
+_Note: The script must begin with a change to the current working directory and might load the parameters.mat (see [`./scripts/matlab/template.m`](scripts/matlab/template.m))._
 
 ## Make Scripts Executable
 To make all scripts executable call
