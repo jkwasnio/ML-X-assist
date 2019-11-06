@@ -52,6 +52,24 @@ _Note: Replace `~/ML-X` with the actual path to the ML-X root folder._
 ```
 runs the relaxation/propagation script in all setups sequentially.
 
+### Run Jobs Remotely
+```
+./scripts/exec_script_in_stage_in_all_setupdirs relaxation "file_edit job_remote.sh job_remote.sh \"SGE_JOB_QUEUE=QUEUE;SGE_JOB_MAIL_ADDRESS=USERNAME@DOMAIN.COM;SGE_JOB_MAIL_OPTIONS=ea;SGE_JOB_MEM_LIMIT_GB=4;SGE_JOB_TIME_LIMIT_H=1;SGE_JOB_NAME=JOBNAME;SGE_JOB_ORDER_COMMAND=;SGE_JOB_PREAMBLE=\""
+./scripts/exec_script_in_stage_in_all_setupdirs propagation "file_edit job_remote.sh job_remote.sh \"SGE_JOB_QUEUE=QUEUE;SGE_JOB_MAIL_ADDRESS=USERNAME@DOMAIN.COM;SGE_JOB_MAIL_OPTIONS=ea;SGE_JOB_MEM_LIMIT_GB=4;SGE_JOB_TIME_LIMIT_H=1;SGE_JOB_NAME=JOBNAME;SGE_JOB_ORDER_COMMAND=;SGE_JOB_PREAMBLE=\""
+```
+edits the file [`./init/job_remote.sh`](init/job_remote.sh).
+
+_Note: Insert your desired values for `QUEUE`, `USERNAME@DOMAIN.COM` and `JOBNAME` and adapt the memory (`SGE_JOB_MEM_LIMIT_GB`) and time limits (`SGE_JOB_TIME_LIMIT_H`) if needed._
+
+Call
+```
+./scripts/exec_script_in_stage_in_all_setupdirs relaxation "qsub job_remote.sh"
+```
+and after all jobs are finished
+```
+./scripts/exec_script_in_stage_in_all_setupdirs propagation "qsub job_remote.sh"
+```
+to submit the jobs to the SGE system.
 
 ### Working with MATLAB
 ```
