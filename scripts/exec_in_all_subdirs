@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # SYNTAX: exec_in_all_subdirs ROOT_DIR COMMAND
 

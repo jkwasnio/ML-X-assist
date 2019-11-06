@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 ###############################################################################
 # This script generates the initial wavefunction for a multi-component 1D

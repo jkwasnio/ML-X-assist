@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # SYNTAX run_matlab_script MATLAB_SCRIPT_NAME
 

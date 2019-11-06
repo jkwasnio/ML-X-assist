@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # SYNTAX init SOURCE_PATH [ATTRIBUTE_NAME_1=ATTRIBUTE_EXPRESSION_1;...;ATTRIBUTE_NAME_N=ATTRIBUTE_EXPRESSION_N]
 # Note: An ATTRIBUTE_EXPRESSION may contain an `{ID}` variable which will be

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 # SYNTAX: python python_module_to_matlab_import_str.py PYTHON_MODULE_NAME
 

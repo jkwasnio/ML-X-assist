@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # SYNTAX: exec_in_all_setups STAGE_NAME COMMAND
 

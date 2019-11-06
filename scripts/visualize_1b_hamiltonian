@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 ###############################################################################
 # This script generates the Hamiltonian for a multi-component 1D system.

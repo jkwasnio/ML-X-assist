@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 # SYNTAX: python file_edit SOURCE_PATH TARGET_PATH  ["[META_VARIABLE_NAME_1=META_VARIABLE_VALUE_1;...;META_VARIABLE_NAME_N=META_VARIABLE_VALUE_N]"]
 
