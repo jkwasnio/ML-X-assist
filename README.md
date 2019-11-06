@@ -29,7 +29,7 @@ and
 ```
 ./scripts/exec_script_in_stage_in_all_setupdirs propagation "init init gAB={ID}-1;hA=0"
 ```
-to copy the content of the `./init` folder (`parameters.py` and `hamiltonian.py`) to each setup. Here, in `parameters.py` each `gAB` is set to the value of the setup id minus one and `hA` is set to zero during the propagation.
+to run the script `./scripts/init` in the stage folder `relaxation`/`propagation` for every setups. `./scripts/init` copies the content of the `./init` folder (`parameters.py` and `hamiltonian.py`) to each setup. Here, in `parameters.py` each `gAB` is set to the value of the setup id minus one and `hA` is set to zero during the propagation.
 
 _Note: The content of `init_relaxaion` (`init_propagation`) is copied as well if such a folder exists. In addition all parameter references (`{PARAMETER_NAME}`) are resolved inside these files as well._
 
