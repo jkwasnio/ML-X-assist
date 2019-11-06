@@ -8,7 +8,7 @@ Call
 ```
 ./scripts/make_setupdirs 2
 ```
-to create two setup folders in `./setup` with ids `1` and `2` (folder names).
+to create two setup folders in `./setups` with ids `1` and `2` (folder names).
 
 
 Call 
