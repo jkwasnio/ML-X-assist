@@ -61,6 +61,8 @@ edits the file [`./init/job_remote.sh`](init/job_remote.sh).
 
 _Note: Insert your desired values for `QUEUE`, `USERNAME@DOMAIN.COM` and `JOBNAME` and adapt the memory (`SGE_JOB_MEM_LIMIT_GB`) and time limits (`SGE_JOB_TIME_LIMIT_H`) if needed._
 
+__Important Note: Enquote e-mail addresses and avoid spaces (or `qsub` will not accept the jobs)!__
+
 Call
 ```
 ./scripts/exec_in_stage_in_all_setupdirs relaxation "qsub job_remote.sh"
