@@ -63,11 +63,11 @@ _Note: Insert your desired values for `QUEUE`, `USERNAME@DOMAIN.COM` and `JOBNAM
 
 Call
 ```
-./scripts/exec_script_in_stage_in_all_setupdirs relaxation "qsub job_remote.sh"
+./scripts/exec_in_stage_in_all_setupdirs relaxation "qsub job_remote.sh"
 ```
 and after all jobs are finished
 ```
-./scripts/exec_script_in_stage_in_all_setupdirs propagation "qsub job_remote.sh"
+./scripts/exec_in_stage_in_all_setupdirs propagation "qsub job_remote.sh"
 ```
 to submit the jobs to the SGE system.
 
