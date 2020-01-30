@@ -10,8 +10,8 @@ Configure the [`parameters.py`](init/parameters.py) and [`hamiltonian.py`](init/
 ```
 creates two setup folders in `./setups` with ids `1` and `2` (folder names).
 ```
-./scripts/make_stage_dirs relaxation
-./scripts/make_stage_dirs propagation
+./scripts/make_stagedirs relaxation
+./scripts/make_stagedirs propagation
 ```
 creates subdirectories for the relaxation and propagation stage.
 
