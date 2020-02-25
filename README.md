@@ -180,6 +180,8 @@ There are three major categories of scripts provided by ML-X-assits:
 - Stage Maipulating Scripts: operate in in a single stage
 - Multiplexer Scripts: execute commands or scripts in multiple setups/stages consecutively; begin with `exec_` prefix
 
+Descriptions of the most important scripts are given below. See [`scripts`](scripts) for all scripts available.
+
 ### Setups Initializing Scripts
 Initialize the directories of the setups/stages.
 - Operate on ML-X root level.
