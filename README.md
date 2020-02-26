@@ -219,7 +219,7 @@ These scripts apply a manipulation suitable for a single setup/stage to multiple
 | `exec_script_in_all_setupdirs "<command>"` | execute `<path_to_scripts>/<command>` in each setup directory |
 | `exec_script_in_stage_in_all_setupdirs <stage> "<command>"` | execute `<path_to_scripts>/<command>` in each `<stage>` directoy in each setup directory |
 
-The scripts prefixed with `exec_script_` have the advantage to automatiacally insert the path of the `scripts` folder in front of the `<command>`.
+The scripts prefixed with `exec_script_` have the advantage to automatically insert the path of the `scripts` folder in front of the `<command>`.
 
 ## Appendix
 
